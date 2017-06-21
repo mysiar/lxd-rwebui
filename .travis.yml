@@ -14,5 +14,6 @@ install:
   - yarn
 
 script:
+  - yarn
   - yarn build
   - yarn electron-pack
