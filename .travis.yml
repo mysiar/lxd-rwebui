@@ -1,19 +1,12 @@
 language: node_js
+
 node_js:
-  - "8"
+  - "7"
   - "6"
-  - "5"
 
-sudo: true
-
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq -y nodejs build-essential
-
-install:
-  - yarn
+cache:
+  directories:
+    - node_modules
 
 script:
-  - yarn
   - yarn build
-  - yarn electron-pack
