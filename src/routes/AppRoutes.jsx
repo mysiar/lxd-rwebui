@@ -1,9 +1,10 @@
 import React from 'react';
-import {Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
+import Containers from '../components/Containers';
 
 export default (
    <Switch>
-        {/*<Route exact path="/" component={} />*/}
+        <Route exact path="/containers/" component={Containers} />
     </Switch>
 );

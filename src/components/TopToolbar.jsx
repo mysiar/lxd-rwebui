@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar';
 
@@ -22,14 +22,16 @@ class TopToolbar extends Component {
       <Toolbar style={ToolBarStyle}>
         <ToolbarGroup>
 
-          <img height="60" src="img/lxd.png" alt="lxd logo"/>
+          <img height="60" src="/img/lxd.png" alt="lxd logo"/>
           <span>&nbsp;</span>
           <ToolbarTitle text={APP_NAME}/>
 
-          <RaisedButton label="Containers"
-                        backgroundColor={COLOR_PRIMARY_2}
-                        labelColor={COLOR_TEXT_ALTERNATE}
-          />
+          <Link to="/containers">
+            <RaisedButton label="Containers"
+                          backgroundColor={COLOR_PRIMARY_2}
+                          labelColor={COLOR_TEXT_ALTERNATE}
+            />
+          </Link>
           <RaisedButton label="Images"
                         backgroundColor={COLOR_PRIMARY_2}
                         labelColor={COLOR_TEXT_ALTERNATE}

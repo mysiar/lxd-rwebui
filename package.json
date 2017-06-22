@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "material-ui": "^0.18.3",
+    "node-lxd": "https://github.com/mysiar/node-lxd",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.4",
