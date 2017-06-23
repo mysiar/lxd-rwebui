@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import lxd from 'node-lxd';
 import {
   Table,
@@ -9,9 +9,9 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 import Checkbox from 'material-ui/Checkbox';
-import {Card, CardTitle} from 'material-ui/Card';
+import { Card, CardTitle } from 'material-ui/Card';
 
-import {getHost} from '../utils/helpers';
+import { getHost } from '../utils/helpers';
 
 class Containers extends Component {
   constructor(props) {
@@ -35,25 +35,23 @@ class Containers extends Component {
   }
 
   containerRows() {
-    return this.state.containers.map(container => {
-
-        return <TableRow key={container.name()}>
-          <TableRowColumn>{container.name()}</TableRowColumn>
-          <TableRowColumn>{container.architecture()}</TableRowColumn>
-          <TableRowColumn style={{textAlign: 'center'}}><Checkbox
-            checked={container.stateful()}
-            disabled={true}
-          />
-          </TableRowColumn>
-          <TableRowColumn style={{textAlign: 'center'}}><Checkbox
-            checked={container.ephemeral()}
-            disabled={true}
-          />
-          </TableRowColumn>
-          <TableRowColumn>{container.status()}</TableRowColumn>
-        </TableRow>;
-
-      },
+    return this.state.containers.map(container => (
+      <TableRow key={container.name()}>
+        <TableRowColumn>{container.name()}</TableRowColumn>
+        <TableRowColumn>{container.architecture()}</TableRowColumn>
+        <TableRowColumn style={{ textAlign: 'center' }}><Checkbox
+          checked={container.stateful()}
+          disabled
+        />
+        </TableRowColumn>
+        <TableRowColumn style={{ textAlign: 'center' }}><Checkbox
+          checked={container.ephemeral()}
+          disabled
+        />
+        </TableRowColumn>
+        <TableRowColumn>{container.status()}</TableRowColumn>
+      </TableRow>
+        ),
     );
   }
 
@@ -61,9 +59,9 @@ class Containers extends Component {
     return (
       <div>
         <Card className="container">
-          <CardTitle title="Containers" subtitle="List of LXD containers"/>
+          <CardTitle title="Containers" subtitle="List of LXD containers" />
           <Table
-            fixedHeader={true}
+            fixedHeader
             selectable={false}
             multiSelectable={false}
           >

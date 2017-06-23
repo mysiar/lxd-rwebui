@@ -1,5 +1,5 @@
 import * as Colors from 'material-ui/styles/colors';
-import {fade} from 'material-ui/utils/colorManipulator';
+import { fade } from 'material-ui/utils/colorManipulator';
 
 export const COLOR_PRIMARY_1 = Colors.brown500;
 export const COLOR_PRIMARY_2 = Colors.deepOrange900;
