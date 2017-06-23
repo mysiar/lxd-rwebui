@@ -35,24 +35,27 @@ class Containers extends Component {
   }
 
   containerRows() {
-    return this.state.containers.map(container => (
-      <TableRow key={container.name()}>
-        <TableRowColumn>{container.name()}</TableRowColumn>
-        <TableRowColumn>{container.architecture()}</TableRowColumn>
-        <TableRowColumn style={{ textAlign: 'center' }}><Checkbox
-          checked={container.stateful()}
-          disabled
-        />
-        </TableRowColumn>
-        <TableRowColumn style={{ textAlign: 'center' }}><Checkbox
-          checked={container.ephemeral()}
-          disabled
-        />
-        </TableRowColumn>
-        <TableRowColumn>{container.status()}</TableRowColumn>
-      </TableRow>
+    if (this.state.containers) {
+      return this.state.containers.map(container => (
+        <TableRow key={container.name()}>
+          <TableRowColumn>{container.name()}</TableRowColumn>
+          <TableRowColumn>{container.architecture()}</TableRowColumn>
+          <TableRowColumn style={{ textAlign: 'center' }}><Checkbox
+            checked={container.stateful()}
+            disabled
+          />
+          </TableRowColumn>
+          <TableRowColumn style={{ textAlign: 'center' }}><Checkbox
+            checked={container.ephemeral()}
+            disabled
+          />
+          </TableRowColumn>
+          <TableRowColumn>{container.status()}</TableRowColumn>
+        </TableRow>
         ),
-    );
+      );
+    }
+    return null;
   }
 
   render() {
