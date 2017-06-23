@@ -7,7 +7,7 @@
   "main": "public/electron.js",
   "homepage": "./",
   "build": {
-    "appId": "com.mysiar.lxd-rui",
+    "appId": "com.mysiar.lxd-rwebui",
     "files": [
       "build/**/*",
       "node_modules/**/*"
@@ -41,15 +41,15 @@
     "concurrently": "^3.4.0",
     "electron": "^1.6.11",
     "electron-builder": "^19.4.2",
-    "eslint": "^4.0.0",
+    "eslint": "^3.19.0",
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-react": "^7.1.0",
-    "react-scripts": "^1.0.7",
+    "react-scripts": "1.0.7",
     "wait-on": "^2.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI='' react-scripts build",
     "lint": "eslint src",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

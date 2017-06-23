@@ -28,5 +28,6 @@ module.exports = {
   ],
   'rules':{
     'no-console': 0,
+    "semi": "error",
   }
 };
