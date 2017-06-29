@@ -2,6 +2,7 @@ LXD Web User Interface
 ===
 
 [![Build Status](https://travis-ci.org/mysiar/lxd-rwebui.svg?branch=master)](https://travis-ci.org/mysiar/lxd-rwebui)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ### Functionality
 1. Containers
