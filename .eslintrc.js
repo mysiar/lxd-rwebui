@@ -30,5 +30,6 @@ module.exports = {
   'rules':{
     'no-console': 0,
     "semi": "error",
+    "react/require-default-props": 0,
   }
 };

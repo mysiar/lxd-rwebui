@@ -28,6 +28,7 @@
   "dependencies": {
     "material-ui": "^0.18.3",
     "node-lxd": "https://github.com/mysiar/node-lxd",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.4",
@@ -35,7 +36,8 @@
     "react-router-redux": "^4.0.8",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
-    "redux-form": "^6.6.3"
+    "redux-form": "^6.6.3",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "concurrently": "^3.4.0",

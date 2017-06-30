@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import lxd from 'node-lxd';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
+import Checkbox from 'material-ui/Checkbox';
+
+import { connect } from 'react-redux';
+
+
 import {
   Table,
   TableBody,
@@ -8,37 +15,39 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
-import Checkbox from 'material-ui/Checkbox';
+
 import { Card, CardTitle } from 'material-ui/Card';
 
-import { getHost } from '../utils/helpers';
+import { list, reset } from '../actions/containers';
 
 class Containers extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      containers: [],
-    };
-  }
-
-  componentWillMount() {
-    this.lxd = lxd(getHost());
-  }
+  static propTypes = {
+    error: PropTypes.string,
+    loading: PropTypes.bool.isRequired,
+    containers: PropTypes.arrayOf(
+      PropTypes.shape({}),
+    ).isRequired,
+    list: PropTypes.func.isRequired,
+    reset: PropTypes.func.isRequired,
+  };
 
   componentDidMount() {
-    this.lxd.containers((err, containers) => {
-      this.setState({
-        containers,
-      });
-    });
+    this.props.list();
   }
 
-  containerRows() {
-    if (this.state.containers) {
-      return this.state.containers.map(container => (
+  componentWillUnmount() {
+    this.props.reset();
+  }
+
+  renderTableBody() {
+    if (this.props.containers) {
+      return this.props.containers.map(container => (
         <TableRow key={container.name()}>
-          <TableRowColumn>{container.name()}</TableRowColumn>
+          <TableRowColumn>
+            <Link to={`/containers/${container.name()}`} >
+              {container.name()}
+            </Link>
+          </TableRowColumn>
           <TableRowColumn>{container.architecture()}</TableRowColumn>
           <TableRowColumn style={{ textAlign: 'center' }}><Checkbox
             checked={container.stateful()}
@@ -63,6 +72,8 @@ class Containers extends Component {
       <div>
         <Card className="container">
           <CardTitle title="Containers" subtitle="List of LXD containers" />
+          {this.props.loading && <div className="container">Loading...</div>}
+          {this.props.error && <div className="container">{this.props.error}</div>}
           <Table
             fixedHeader
             selectable={false}
@@ -81,7 +92,7 @@ class Containers extends Component {
               </TableRow>
             </TableHeader>
             <TableBody displayRowCheckbox={false}>
-              {this.containerRows()}
+              {this.renderTableBody()}
             </TableBody>
           </Table>
         </Card>
@@ -90,4 +101,15 @@ class Containers extends Component {
   }
 }
 
-export default Containers;
+const mapStateToProps = state => ({
+  containers: state.containers.containers,
+  error: state.containers.error,
+  loading: state.containers.loading,
+});
+
+const mapDispatchToProps = dispatch => ({
+  list: () => dispatch(list()),
+  reset: () => dispatch(reset()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Containers);

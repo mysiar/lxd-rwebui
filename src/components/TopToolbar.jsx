@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
-import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
+import { Toolbar, ToolbarGroup, ToolbarTitle, ToolbarSeparator } from 'material-ui/Toolbar';
 
 import {
   COLOR_PRIMARY_1,
@@ -30,11 +30,8 @@ const TopToolbar = () => (
           labelColor={COLOR_TEXT_ALTERNATE}
         />
       </Link>
-      <RaisedButton
-        label="Images"
-        backgroundColor={COLOR_PRIMARY_2}
-        labelColor={COLOR_TEXT_ALTERNATE}
-      />
+      <ToolbarSeparator />
+      <ToolbarSeparator />
       <RaisedButton
         label="Profiles"
         backgroundColor={COLOR_PRIMARY_2}
