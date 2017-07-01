@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
 import Checkbox from 'material-ui/Checkbox';
-
 import { connect } from 'react-redux';
-
-
 import {
   Table,
   TableBody,
@@ -15,7 +11,6 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
-
 import { Card, CardTitle } from 'material-ui/Card';
 
 import { list, reset } from '../actions/containers';
@@ -23,7 +18,6 @@ import { list, reset } from '../actions/containers';
 class Containers extends Component {
   static propTypes = {
     error: PropTypes.string,
-    loading: PropTypes.bool.isRequired,
     containers: PropTypes.arrayOf(
       PropTypes.shape({}),
     ).isRequired,
@@ -72,7 +66,6 @@ class Containers extends Component {
       <div>
         <Card className="container">
           <CardTitle title="Containers" subtitle="List of LXD containers" />
-          {this.props.loading && <div className="container">Loading...</div>}
           {this.props.error && <div className="container">{this.props.error}</div>}
           <Table
             fixedHeader
@@ -104,7 +97,6 @@ class Containers extends Component {
 const mapStateToProps = state => ({
   containers: state.containers.containers,
   error: state.containers.error,
-  loading: state.containers.loading,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -14,9 +14,8 @@ class Container extends Component {
     }).isRequired,
     item: PropTypes.func.isRequired,
     error: PropTypes.string,
-    loading: PropTypes.bool.isRequired,
-    container: PropTypes.shape({}).isRequired,
-  };
+    container: PropTypes.any.isRequired,
+  }
 
   componentWillMount() {
     this.props.item(this.props.match.params.id);
@@ -29,7 +28,6 @@ class Container extends Component {
     return (
       <div>
         <div>Container: {name}</div>
-        {this.props.loading && <div className="container">Loading...</div>}
         {this.props.error && <div className="container">{this.props.error}</div>}
       </div>
     );
@@ -39,7 +37,6 @@ class Container extends Component {
 const mapStateToProps = state => ({
   container: state.container.container,
   error: state.container.error,
-  loading: state.container.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
