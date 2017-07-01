@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Card, CardTitle } from 'material-ui/Card';
+import { isEmpty as _isEmpty } from 'lodash';
 
 import { item, reset } from '../actions/container';
+
 
 class Container extends Component {
 
@@ -14,7 +17,7 @@ class Container extends Component {
     }).isRequired,
     item: PropTypes.func.isRequired,
     error: PropTypes.string,
-    container: PropTypes.any.isRequired,
+    container: PropTypes.object.isRequired,
   }
 
   componentWillMount() {
@@ -23,12 +26,14 @@ class Container extends Component {
 
 
   render() {
-    const name = this.props.match.params.id;
-    console.log();
+    const container = this.props.container;
     return (
       <div>
-        <div>Container: {name}</div>
-        {this.props.error && <div className="container">{this.props.error}</div>}
+        <Card className="container">
+          <CardTitle title="Container" subtitle={!_isEmpty(container) && container.name()} />
+
+          {this.props.error && <div className="container">{this.props.error}</div>}
+        </Card>
       </div>
     );
   }

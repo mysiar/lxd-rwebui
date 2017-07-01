@@ -43,7 +43,11 @@ class TopToolbar extends Component {
         <ToolbarGroup>
 
           {this.checkLoading() && <ProgressBar />}
-          {!this.checkLoading() && <img height="50" src="/img/lxd.png" alt="lxd logo" />}
+          {!this.checkLoading() &&
+            <Link to="/" t>
+              <img height="50" src="/img/lxd.png" alt="lxd logo" />
+            </Link>
+          }
           <span>&nbsp;</span>
           <ToolbarTitle text={APP_NAME} />
 
@@ -54,13 +58,13 @@ class TopToolbar extends Component {
               labelColor={COLOR_TEXT_ALTERNATE}
             />
           </Link>
-          <ToolbarSeparator />
-          <ToolbarSeparator />
-          <RaisedButton
-            label="Profiles"
-            backgroundColor={COLOR_PRIMARY_2}
-            labelColor={COLOR_TEXT_ALTERNATE}
-          />
+          {/* <ToolbarSeparator />*/}
+
+          {/* <RaisedButton*/}
+          {/* label="Profiles"*/}
+          {/* backgroundColor={COLOR_PRIMARY_2}*/}
+          {/* labelColor={COLOR_TEXT_ALTERNATE}*/}
+          {/* />*/}
 
         </ToolbarGroup>
 

@@ -16,3 +16,5 @@ LXD Web User Interface
 
 Right now there is no option to set LXD host from the interface.
 Settings are in ***src/utils/helpers.js***
+
+[![Containers](doc/lxd-rwebui-01.png)]

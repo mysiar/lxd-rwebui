@@ -31,5 +31,6 @@ module.exports = {
     'no-console': 0,
     "semi": "error",
     "react/require-default-props": 0,
+    "react/forbid-prop-types": [0, { "forbid": ['object', 'array'] }]
   }
 };
