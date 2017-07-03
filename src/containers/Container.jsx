@@ -10,7 +10,7 @@ import IconRestart from 'material-ui/svg-icons/av/repeat';
 import IconDelete from 'material-ui/svg-icons/content/delete-sweep';
 
 import { COLOR_PRIMARY_2 } from '../constants/Colors';
-import { item, reset } from '../actions/container';
+import { item, reset, start, stop } from '../actions/container';
 import { containerNameButton, containerStatusButton } from '../utils/helpers';
 
 const iconStyle = {
@@ -29,12 +29,19 @@ class Container extends Component {
       }),
     }).isRequired,
     item: PropTypes.func.isRequired,
+    start: PropTypes.func.isRequired,
+    stop: PropTypes.func.isRequired,
+    reset: PropTypes.func.isRequired,
     error: PropTypes.string,
     container: PropTypes.object.isRequired,
   };
 
   componentWillMount() {
     this.props.item(this.props.match.params.id);
+  }
+
+  componentWillUnmount() {
+    this.props.reset();
   }
 
   isContainer() {
@@ -58,6 +65,34 @@ class Container extends Component {
     return '';
   }
 
+
+  containerInfo() {
+    if (this.isContainer()) {
+      const container = this.props.container;
+      return (
+        <div className="container">
+          <div>IPv4 : {container.ipv4()}</div>
+
+          <br />
+        </div>
+      );
+    }
+
+    return <span />;
+  }
+
+  containerStart = () => {
+    if (this.isContainer()) {
+      this.props.start(this.props.container);
+    }
+  }
+
+  containerStop = () => {
+    if (this.isContainer()) {
+      this.props.stop(this.props.container);
+    }
+  }
+
   render() {
     return (
       <div>
@@ -73,12 +108,18 @@ class Container extends Component {
 
           <div className="container">
             <hr />
-            <IconStart style={iconStyle} />
-            <IconStop style={iconStyle} />
+
+            <span onClick={this.containerStart}>
+              <IconStart style={iconStyle} />
+            </span>
+            <span onClick={this.containerStop}>
+              <IconStop style={iconStyle} />
+            </span>
+
             <IconRestart style={iconStyle} />
             <IconDelete style={iconStyle} />
             <hr />
-            <br />
+            {this.containerInfo()}
           </div>
         </Card>
       </div>
@@ -93,6 +134,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   item: arg => dispatch(item(arg)),
+  start: arg => dispatch(start(arg)),
+  stop: arg => dispatch(stop(arg)),
   reset: () => dispatch(reset()),
 });
 

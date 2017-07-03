@@ -33,3 +33,33 @@ export function item(name) {
 export function reset() {
   return { type: 'CONTAINER_ITEM_RESET' };
 }
+
+export function start(container) {
+  return (dispatch) => {
+    dispatch(loading(true));
+    container.start((err) => {
+      if (err != null) {
+        dispatch(loading(false));
+        dispatch(error(err));
+      } else {
+        dispatch(loading(false));
+        dispatch(item(container.name()));
+      }
+    });
+  };
+}
+
+export function stop(container) {
+  return (dispatch) => {
+    dispatch(loading(true));
+    container.stop((err) => {
+      if (err != null) {
+        dispatch(loading(false));
+        dispatch(error(err));
+      } else {
+        dispatch(loading(false));
+        dispatch(item(container.name()));
+      }
+    });
+  };
+}
