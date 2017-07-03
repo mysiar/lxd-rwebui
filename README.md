@@ -8,6 +8,9 @@ LXD Web User Interface
 ### Functionality
 1. Containers
     * list
+    * start
+    * stop 
+    * restart 
     
 ### TODO
 1. Containers - all api functionality
