@@ -50,13 +50,14 @@
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-react": "^7.1.0",
     "react-scripts": "1.0.7",
-    "wait-on": "^2.0.2"
+    "wait-on": "^2.0.2",
+    "snyk": "^1.36.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "CI='' react-scripts build",
     "lint": "eslint src",
-    "test": "react-scripts test --env=jsdom",
+    "test": "snyk test && react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "electron-pack": "build --em.main=build/electron.js",
