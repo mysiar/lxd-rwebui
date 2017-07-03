@@ -12,3 +12,7 @@ export const COLOR_TEXT_ALTERNATE = Colors.white;
 export const COLOR_CANVAS = Colors.white;
 export const COLOR_BORDER = Colors.grey300;
 export const COLOR_DISABLED = fade(Colors.darkBlack, 0.3);
+
+export const COLOR_CONTAINER_STATUS_RUNNING = Colors.green500;
+export const COLOR_CONTAINER_STATUS_STOPPED = Colors.red500;
+export const COLOR_CONTAINER_STATUS_DEFAULT = Colors.grey300;

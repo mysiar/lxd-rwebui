@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import Checkbox from 'material-ui/Checkbox';
 import { connect } from 'react-redux';
 import {
@@ -12,15 +11,9 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 import { Card, CardTitle } from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
 
 import { list, reset } from '../actions/containers';
-
-const buttonStyle = {
-  margin: 3,
-  height: 20,
-};
-
+import { containerNameButton, containerStatusButton } from '../utils/helpers';
 
 class Containers extends Component {
   static propTypes = {
@@ -45,10 +38,7 @@ class Containers extends Component {
       return this.props.containers.map(container => (
         <TableRow key={container.name()}>
           <TableRowColumn>
-            <Link to={`/containers/${container.name()}`} >
-              <RaisedButton label={container.name()} primary style={buttonStyle} />
-
-            </Link>
+            {containerNameButton(container.name())}
           </TableRowColumn>
           <TableRowColumn>{container.architecture()}</TableRowColumn>
           <TableRowColumn style={{ textAlign: 'center' }}><Checkbox
@@ -61,7 +51,7 @@ class Containers extends Component {
             disabled
           />
           </TableRowColumn>
-          <TableRowColumn>{container.status()}</TableRowColumn>
+          <TableRowColumn>{containerStatusButton(container.statusCode())}</TableRowColumn>
         </TableRow>
         ),
       );
