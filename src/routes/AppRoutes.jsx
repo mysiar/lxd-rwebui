@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import HomePage from '../components/HomePage';
-import Containers from '../components/Containers';
-import Container from '../components/Container';
+import Containers from '../containers/Containers';
+import Container from '../containers/Container';
 
 export default (
   <Switch>

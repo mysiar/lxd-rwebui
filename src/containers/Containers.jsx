@@ -12,8 +12,15 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 import { Card, CardTitle } from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import { list, reset } from '../actions/containers';
+
+const buttonStyle = {
+  margin: 3,
+  height: 20,
+};
+
 
 class Containers extends Component {
   static propTypes = {
@@ -39,7 +46,8 @@ class Containers extends Component {
         <TableRow key={container.name()}>
           <TableRowColumn>
             <Link to={`/containers/${container.name()}`} >
-              {container.name()}
+              <RaisedButton label={container.name()} primary style={buttonStyle} />
+
             </Link>
           </TableRowColumn>
           <TableRowColumn>{container.architecture()}</TableRowColumn>

@@ -12,7 +12,7 @@ import AppStore from './store/AppStore';
 import theme from './styles/MaterialUiRawTheme';
 import './styles/style.css';
 
-import TopToolbar from './components/TopToolbar';
+import TopToolbar from './containers/TopToolbar';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941

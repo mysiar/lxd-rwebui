@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
-import { Toolbar, ToolbarGroup, ToolbarTitle, ToolbarSeparator } from 'material-ui/Toolbar';
+import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
 
 import {
   COLOR_PRIMARY_1,
@@ -13,7 +13,7 @@ import {
 
 import { APP_NAME, APP_VER } from '../constants/App';
 
-import ProgressBar from './ProgressBar';
+import ProgressBar from '../components/ProgressBar';
 
 const ToolBarStyle = {
   backgroundColor: COLOR_PRIMARY_1,
@@ -44,7 +44,7 @@ class TopToolbar extends Component {
 
           {this.checkLoading() && <ProgressBar />}
           {!this.checkLoading() &&
-            <Link to="/" t>
+            <Link to="/">
               <img height="50" src="/img/lxd.png" alt="lxd logo" />
             </Link>
           }
@@ -69,6 +69,7 @@ class TopToolbar extends Component {
         </ToolbarGroup>
 
         <ToolbarGroup>
+
           <span>Ver: {APP_VER}</span>
         </ToolbarGroup>
 
