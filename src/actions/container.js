@@ -63,3 +63,18 @@ export function stop(container) {
     });
   };
 }
+
+export function restart(container) {
+  return (dispatch) => {
+    dispatch(loading(true));
+    container.restart((err) => {
+      if (err != null) {
+        dispatch(loading(false));
+        dispatch(error(err));
+      } else {
+        dispatch(loading(false));
+        dispatch(item(container.name()));
+      }
+    });
+  };
+}
