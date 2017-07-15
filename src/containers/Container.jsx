@@ -10,7 +10,7 @@ import IconRestart from 'material-ui/svg-icons/av/repeat';
 import IconDelete from 'material-ui/svg-icons/content/delete-sweep';
 
 import { COLOR_PRIMARY_2 } from '../constants/Colors';
-import { item, reset, start, stop, restart } from '../actions/container';
+import { item, reset, start, stop, restart, refresh } from '../actions/container';
 import { containerNameButton, containerStatusButton } from '../utils/helpers';
 
 const iconStyle = {
@@ -32,6 +32,7 @@ class Container extends Component {
     start: PropTypes.func.isRequired,
     stop: PropTypes.func.isRequired,
     restart: PropTypes.func.isRequired,
+    refresh: PropTypes.func.isRequired,
     reset: PropTypes.func.isRequired,
     error: PropTypes.string,
     container: PropTypes.object.isRequired,
@@ -148,6 +149,7 @@ const mapDispatchToProps = dispatch => ({
   start: arg => dispatch(start(arg)),
   stop: arg => dispatch(stop(arg)),
   restart: arg => dispatch(restart(arg)),
+  refresh: arg => dispatch(refresh(arg)),
   reset: () => dispatch(reset()),
 });
 

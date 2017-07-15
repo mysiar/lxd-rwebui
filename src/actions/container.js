@@ -78,3 +78,18 @@ export function restart(container) {
     });
   };
 }
+
+export function refresh(container) {
+  return (dispatch) => {
+    dispatch(loading(true));
+    container.refresh((err, refreshedContainer) => {
+      if (err != null) {
+        dispatch(loading(false));
+        dispatch(error(err));
+      } else {
+        dispatch(loading(false));
+        dispatch(success(refreshedContainer));
+      }
+    });
+  };
+}
