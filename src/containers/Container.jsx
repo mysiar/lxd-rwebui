@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Card, CardTitle } from 'material-ui/Card';
 import { isEmpty as _isEmpty } from 'lodash';
 
+import IconButton from 'material-ui/IconButton';
 import IconStop from 'material-ui/svg-icons/av/stop';
 import IconStart from 'material-ui/svg-icons/av/play-circle-outline';
 import IconRestart from 'material-ui/svg-icons/av/repeat';
@@ -13,10 +14,11 @@ import { COLOR_PRIMARY_2 } from '../constants/Colors';
 import { item, reset, start, stop, restart, refresh } from '../actions/container';
 import { containerNameButton, containerStatusButton } from '../utils/helpers';
 
-const iconStyle = {
-  width: 30,
-  height: 30,
-  margin: 5,
+
+const iconButtonStyle = {
+  width: 40,
+  height: 40,
+  marginLeft: 5,
   backgroundColor: COLOR_PRIMARY_2,
 };
 
@@ -101,42 +103,69 @@ class Container extends Component {
     }
   }
 
-  render() {
-    return (
-      <div>
-        <Card className="container">
-          <CardTitle
-            title="Container"
-            subtitle={<span>
-              {containerNameButton(this.containerName())}
-              {containerStatusButton(this.containerStatusCode())}
-            </span>}
-          />
-          {this.props.error && <div className="container">{this.props.error}</div>}
-
-          <div className="container">
-            <hr />
-
-            <span onClick={this.containerStart}>
-              <IconStart style={iconStyle} />
-            </span>
-
-            <span onClick={this.containerStop}>
-              <IconStop style={iconStyle} />
-            </span>
-
-            <span onClick={this.containerRestart}>
-              <IconRestart style={iconStyle} />
-            </span>
-
-            <IconDelete style={iconStyle} />
-            <hr />
-            {this.containerInfo()}
-          </div>
-        </Card>
-      </div>
-    );
+  containerInfoRefresh = () => {
+    if (this.isContainer()) {
+      this.props.refresh(this.props.container);
+    }
   }
+
+  render() {
+    if (this.isContainer()) {
+      return (
+        <div>
+          <Card className="container">
+            <CardTitle
+              title="Container"
+              subtitle={<span>
+                {containerNameButton(this.containerName(), this.containerInfoRefresh)}
+                {containerStatusButton(this.containerStatusCode())}
+              </span>}
+            />
+            {this.props.error && <div className="container">{this.props.error}</div>}
+
+            <div className="container">
+              <hr />
+
+              <IconButton
+                onClick={this.containerStart}
+                style={iconButtonStyle}
+                tooltip="start container"
+              >
+                <IconStart />
+              </IconButton>
+
+              <IconButton
+                onClick={this.containerStop}
+                style={iconButtonStyle}
+                tooltip="stop container"
+              >
+                <IconStop />
+              </IconButton>
+
+              <IconButton
+                onClick={this.containerRestart}
+                style={iconButtonStyle}
+                tooltip="restart container"
+              >
+                <IconRestart />
+              </IconButton>
+
+              <IconButton
+                style={iconButtonStyle}
+                tooltip="not implemented"
+              >
+                <IconDelete />
+              </IconButton>
+              <hr />
+              {this.containerInfo()}
+            </div>
+          </Card>
+        </div>
+      );
+    }
+    return <span />;
+  }
+
 }
 
 const mapStateToProps = state => ({

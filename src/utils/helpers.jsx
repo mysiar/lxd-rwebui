@@ -21,7 +21,7 @@ export function containerStatus(code) {
   return LXD_STATUS_CODES[code];
 }
 
-export function containerNameButton(name) {
+export function containerNameButton(name, callback = () => {}) {
   return (
     <Link to={`/containers/${name}`} >
       <RaisedButton
@@ -29,6 +29,7 @@ export function containerNameButton(name) {
         primary
         style={containerButtonStyle}
         labelStyle={containerButtonLabelStyle}
+        onClick={callback}
       />
     </Link>
   );

@@ -26,13 +26,13 @@ export function loading(state = false, action) {
   }
 }
 
-export function container(state = [], action) {
+export function container(state = {}, action) {
   switch (action.type) {
     case 'CONTAINER_ITEM_SUCCESS':
       return action.container;
 
     case 'CONTAINER_ITEM_RESET':
-      return [];
+      return {};
 
     default:
       return state;
