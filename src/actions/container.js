@@ -1,5 +1,5 @@
 import lxd from 'node-lxd';
-import { getHost } from '../utils/helpers';
+import { getLxdServer } from '../utils/localStorage';
 
 export function error(msg) {
   return { type: 'CONTAINERS_ITEM_ERROR', msg };
@@ -14,7 +14,7 @@ export function success(container) {
 }
 
 export function item(name) {
-  const client = lxd(getHost());
+  const client = lxd(getLxdServer());
   return (dispatch) => {
     dispatch(loading(true));
 
