@@ -43,7 +43,6 @@ class TopToolbar extends Component {
   }
 
   render() {
-    console.log('props', this.props.lxdServer);
     return (
 
       <Toolbar style={ToolBarStyle}>

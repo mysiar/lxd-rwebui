@@ -8,9 +8,8 @@ import container from '../reducers/container';
 import { getLxdServer, setLxdServer } from '../utils/localStorage';
 
 const lxdServer = getLxdServer();
-console.log('AppStore',lxdServer);
 const initialState = {};
-let AppStore = {};
+let AppStore;
 
 if (process.env.NODE_ENV === 'development') {
   AppStore = createStore(
