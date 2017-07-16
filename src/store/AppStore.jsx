@@ -5,7 +5,10 @@ import { reducer as form } from 'redux-form';
 
 import containers from '../reducers/containers';
 import container from '../reducers/container';
+import { getLxdServer, setLxdServer } from '../utils/localStorage';
 
+const lxdServer = getLxdServer();
+console.log('AppStore',lxdServer);
 const initialState = {};
 let AppStore = {};
 
@@ -13,6 +16,7 @@ if (process.env.NODE_ENV === 'development') {
   AppStore = createStore(
     combineReducers(
       {
+        lxdServer,
         routing,
         form,
         containers,
@@ -31,6 +35,7 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   AppStore = createStore(
     combineReducers({
+      lxdServer,
       routing,
       form,
       containers,
@@ -40,4 +45,9 @@ if (process.env.NODE_ENV === 'development') {
     initialState,
   );
 }
+
+AppStore.subscribe(() => {
+  setLxdServer(AppStore.getState().lxdServer);
+});
+
 export default AppStore;

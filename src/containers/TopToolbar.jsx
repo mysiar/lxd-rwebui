@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
+import TextField from 'material-ui/TextField';
 
 import {
   COLOR_PRIMARY_1,
@@ -15,6 +16,8 @@ import { APP_NAME, APP_VER } from '../constants/App';
 
 import ProgressBar from '../components/ProgressBar';
 
+import { setLxdServer, getLxdServer } from '../utils/localStorage';
+
 const ToolBarStyle = {
   backgroundColor: COLOR_PRIMARY_1,
 };
@@ -25,6 +28,9 @@ class TopToolbar extends Component {
     loading: PropTypes.arrayOf(
       PropTypes.bool,
     ).isRequired,
+    lxdServer: PropTypes.string,
+    setLxdServer: PropTypes.func,
+    getLxdServer: PropTypes.func,
   };
 
   checkLoading() {
@@ -37,6 +43,7 @@ class TopToolbar extends Component {
   }
 
   render() {
+    console.log('props', this.props.lxdServer);
     return (
 
       <Toolbar style={ToolBarStyle}>
@@ -44,9 +51,9 @@ class TopToolbar extends Component {
 
           {this.checkLoading() && <ProgressBar />}
           {!this.checkLoading() &&
-            <Link to="/">
-              <img height="50" src="/img/lxd.png" alt="lxd logo" />
-            </Link>
+          <Link to="/">
+            <img height="50" src="/img/lxd.png" alt="lxd logo" />
+          </Link>
           }
           <span>&nbsp;</span>
           <ToolbarTitle text={APP_NAME} />
@@ -69,9 +76,17 @@ class TopToolbar extends Component {
         </ToolbarGroup>
 
         <ToolbarGroup>
-
+          <TextField
+            id="lxd-server"
+            defaultValue={this.props.getLxdServer()}
+            onChange={(event, input) => {
+              this.props.setLxdServer(input);
+            }}
+            // value={this.props.lxdServer}
+          />
           <span>Ver: {APP_VER}</span>
         </ToolbarGroup>
+
 
       </Toolbar>
     );
@@ -85,4 +100,9 @@ const mapStateToProps = state => ({
   ],
 });
 
-export default connect(mapStateToProps)(TopToolbar);
+const mapDispatchToProps = () => ({
+  setLxdServer,
+  getLxdServer,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopToolbar);
