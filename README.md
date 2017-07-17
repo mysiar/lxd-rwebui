@@ -19,3 +19,5 @@ LXD Web User Interface
 4. ???
 
 ![Containers](doc/lxd-rwebui-01.png)
+
+![Containers](doc/lxd-rwebui-02.png)
