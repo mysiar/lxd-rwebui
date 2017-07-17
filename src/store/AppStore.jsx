@@ -9,18 +9,20 @@ import { getLxdServer, setLxdServer } from '../utils/localStorage';
 
 const lxdServer = getLxdServer();
 const initialState = {};
-let AppStore;
+let AppStore = {};
+
+const reducers = combineReducers(
+  {
+    lxdServer,
+    routing,
+    form,
+    containers,
+    container,
+  });
 
 if (process.env.NODE_ENV === 'development') {
   AppStore = createStore(
-    combineReducers(
-      {
-        lxdServer,
-        routing,
-        form,
-        containers,
-        container,
-      }),
+    reducers,
     initialState,
     compose(
       applyMiddleware(thunk),
@@ -33,15 +35,11 @@ if (process.env.NODE_ENV === 'development') {
   );
 } else {
   AppStore = createStore(
-    combineReducers({
-      lxdServer,
-      routing,
-      form,
-      containers,
-      container,
-    }),
-    applyMiddleware(thunk),
     initialState,
+    reducers,
+    compose(
+      applyMiddleware(thunk),
+    ),
   );
 }
 
