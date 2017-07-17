@@ -35,8 +35,8 @@ if (process.env.NODE_ENV === 'development') {
   );
 } else {
   AppStore = createStore(
-    initialState,
     reducers,
+    initialState,
     compose(
       applyMiddleware(thunk),
     ),
