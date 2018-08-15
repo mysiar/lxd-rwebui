@@ -52,14 +52,6 @@ class Container extends Component {
     return -1;
   }
 
-  containerName() {
-    if (this.isContainer()) {
-      return this.props.container.name;
-    }
-    return '-';
-  }
-
-
   containerInfo() {
     if (this.isContainer()) {
       const container = this.props.container;
@@ -83,19 +75,19 @@ class Container extends Component {
 
   containerStop = () => {
     if (this.isContainer()) {
-      this.props.stop(this.props.container);
+      this.props.stop(this.props.container.name);
     }
   }
 
   containerRestart = () => {
     if (this.isContainer()) {
-      this.props.restart(this.props.container);
+      this.props.restart(this.props.container.name);
     }
   }
 
   containerInfoRefresh = () => {
     if (this.isContainer()) {
-      this.props.refresh(this.props.container);
+      this.props.refresh(this.props.container.name);
     }
   }
 

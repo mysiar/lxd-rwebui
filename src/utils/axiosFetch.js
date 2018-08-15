@@ -14,6 +14,9 @@ export default function (url = '', options = { method: 'GET' }) {
       username: LXD_USER,
       password: LXD_PASS,
     },
+    headers: {
+      'Content-Type': 'application/json',
+    },
   });
 
   return client.request({
