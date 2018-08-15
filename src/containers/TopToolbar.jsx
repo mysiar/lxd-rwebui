@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
-import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
+import { Toolbar, ToolbarGroup, ToolbarTitle, ToolbarSeparator } from 'material-ui/Toolbar';
 import TextField from 'material-ui/TextField';
 
 import {
@@ -64,13 +64,26 @@ class TopToolbar extends Component {
               labelColor={COLOR_TEXT_ALTERNATE}
             />
           </Link>
-          {/* <ToolbarSeparator />*/}
 
-          {/* <RaisedButton*/}
-          {/* label="Profiles"*/}
-          {/* backgroundColor={COLOR_PRIMARY_2}*/}
-          {/* labelColor={COLOR_TEXT_ALTERNATE}*/}
-          {/* />*/}
+          <ToolbarSeparator />
+
+          <Link to="/">
+            <RaisedButton
+              label="Images"
+              backgroundColor={COLOR_PRIMARY_2}
+              labelColor={COLOR_TEXT_ALTERNATE}
+            />
+          </Link>
+
+          <ToolbarSeparator />
+
+          <Link to="/">
+            <RaisedButton
+              label="Profiles"
+              backgroundColor={COLOR_PRIMARY_2}
+              labelColor={COLOR_TEXT_ALTERNATE}
+            />
+          </Link>
 
         </ToolbarGroup>
 

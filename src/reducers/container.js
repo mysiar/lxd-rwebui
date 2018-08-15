@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux';
+import {
+  CONTAINER_ITEM_ERROR, CONTAINER_ITEM_LOADING, CONTAINER_ITEM_SUCCESS, CONTAINER_ITEM_RESET,
+} from '../constants/App';
 
 export function error(state = null, action) {
   switch (action.type) {
-    case 'CONTAINER_ITEM_ERROR':
+    case CONTAINER_ITEM_ERROR:
       return action.msg;
 
-    case 'CONTAINER_ITEM_RESET':
+    case CONTAINER_ITEM_RESET:
       return null;
 
     default:
@@ -15,10 +18,10 @@ export function error(state = null, action) {
 
 export function loading(state = false, action) {
   switch (action.type) {
-    case 'CONTAINER_ITEM_LOADING':
+    case CONTAINER_ITEM_LOADING:
       return action.msg;
 
-    case 'CONTAINER_ITEM_RESET':
+    case CONTAINER_ITEM_RESET:
       return false;
 
     default:
@@ -28,10 +31,10 @@ export function loading(state = false, action) {
 
 export function container(state = {}, action) {
   switch (action.type) {
-    case 'CONTAINER_ITEM_SUCCESS':
+    case CONTAINER_ITEM_SUCCESS:
       return action.container;
 
-    case 'CONTAINER_ITEM_RESET':
+    case CONTAINER_ITEM_RESET:
       return {};
 
     default:

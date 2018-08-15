@@ -1,19 +1,23 @@
 import fetch from '../utils/axiosFetch';
+import {
+  CONTAINERS_LIST_ERROR, CONTAINERS_LIST_LOADING, CONTAINERS_LIST_SUCCESS,
+  CONTAINERS_LIST_ADD, CONTAINERS_LIST_RESET,
+} from '../constants/App';
 
 export function error(msg) {
-  return { type: 'CONTAINERS_LIST_ERROR', msg };
+  return { type: CONTAINERS_LIST_ERROR, msg };
 }
 
 export function loading(msg) {
-  return { type: 'CONTAINERS_LIST_LOADING', msg };
+  return { type: CONTAINERS_LIST_LOADING, msg };
 }
 
 export function success(containers) {
-  return { type: 'CONTAINERS_LIST_SUCCESS', containers };
+  return { type: CONTAINERS_LIST_SUCCESS, containers };
 }
 
 export function add(container) {
-  return { type: 'CONTAINERS_LIST_ADD', container };
+  return { type: CONTAINERS_LIST_ADD, container };
 }
 
 export function list() {
@@ -32,5 +36,5 @@ export function list() {
 }
 
 export function reset() {
-  return { type: 'CONTAINERS_LIST_RESET' };
+  return { type: CONTAINERS_LIST_RESET };
 }
