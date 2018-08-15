@@ -25,12 +25,6 @@ const iconButtonStyle = {
 class Container extends Component {
 
   static propTypes = {
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        id: PropTypes.string.isRequired,
-      }),
-    }).isRequired,
-    item: PropTypes.func.isRequired,
     start: PropTypes.func.isRequired,
     stop: PropTypes.func.isRequired,
     restart: PropTypes.func.isRequired,
@@ -39,10 +33,6 @@ class Container extends Component {
     error: PropTypes.string,
     container: PropTypes.object.isRequired,
   };
-
-  componentWillMount() {
-    this.props.item(this.props.match.params.id);
-  }
 
   componentWillUnmount() {
     this.props.reset();
@@ -57,16 +47,16 @@ class Container extends Component {
 
   containerStatusCode() {
     if (this.isContainer()) {
-      return this.props.container.statusCode();
+      return this.props.container.status_code;
     }
     return -1;
   }
 
   containerName() {
     if (this.isContainer()) {
-      return this.props.container.name();
+      return this.props.container.name;
     }
-    return '';
+    return '-';
   }
 
 
@@ -75,7 +65,7 @@ class Container extends Component {
       const container = this.props.container;
       return (
         <div className="container">
-          <div>IPv4 : {container.ipv4()}</div>
+          <div>IPv4 : {container.ipv4}</div>
 
           <br />
         </div>
@@ -87,7 +77,7 @@ class Container extends Component {
 
   containerStart = () => {
     if (this.isContainer()) {
-      this.props.start(this.props.container);
+      this.props.start(this.props.container.name);
     }
   }
 
@@ -117,7 +107,7 @@ class Container extends Component {
             <CardTitle
               title="Container"
               subtitle={<span>
-                {containerNameButton(this.containerName(), this.containerInfoRefresh)}
+                {containerNameButton(this.props.container, this.containerInfoRefresh)}
                 {containerStatusButton(this.containerStatusCode())}
               </span>}
             />

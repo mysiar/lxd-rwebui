@@ -13,6 +13,7 @@ import {
 import { Card, CardTitle } from 'material-ui/Card';
 
 import { list, reset } from '../actions/containers';
+import { item } from '../actions/container';
 import { containerNameButton, containerStatusButton } from '../utils/helpers';
 
 class Containers extends Component {
@@ -23,6 +24,7 @@ class Containers extends Component {
     ).isRequired,
     list: PropTypes.func.isRequired,
     reset: PropTypes.func.isRequired,
+    item: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -38,7 +40,7 @@ class Containers extends Component {
       return this.props.containers.map(container => (
         <TableRow key={container.name}>
           <TableRowColumn>
-            {containerNameButton(container.name)}
+            {containerNameButton(container, () => this.props.item(container))}
           </TableRowColumn>
           <TableRowColumn>{container.architecture}</TableRowColumn>
           <TableRowColumn style={{ textAlign: 'center' }}><Checkbox
@@ -100,6 +102,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   list: () => dispatch(list()),
   reset: () => dispatch(reset()),
+  item: arg => dispatch(item(arg)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Containers);

@@ -17,7 +17,7 @@ export default function (url = '', options = { method: 'GET' }) {
   });
 
   return client.request({
-    method: options.method,
+    ...options,
     url: getLxdServer() + url,
   });
 }

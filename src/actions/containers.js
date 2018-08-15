@@ -1,5 +1,3 @@
-// import lxd from 'node-lxd';
-// import { getLxdServer } from '../utils/localStorage';
 import fetch from '../utils/axiosFetch';
 
 export function error(msg) {
