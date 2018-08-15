@@ -34,9 +34,13 @@ export function containers(state = [], action) {
     case 'CONTAINERS_LIST_RESET':
       return [];
 
+    case 'CONTAINERS_LIST_ADD':
+      return [...state, action.container];
+
     default:
       return state;
   }
 }
+
 
 export default combineReducers({ error, loading, containers });

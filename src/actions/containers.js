@@ -1,5 +1,6 @@
-import lxd from 'node-lxd';
-import { getLxdServer } from '../utils/localStorage';
+// import lxd from 'node-lxd';
+// import { getLxdServer } from '../utils/localStorage';
+import fetch from '../utils/axiosFetch';
 
 export function error(msg) {
   return { type: 'CONTAINERS_LIST_ERROR', msg };
@@ -13,19 +14,21 @@ export function success(containers) {
   return { type: 'CONTAINERS_LIST_SUCCESS', containers };
 }
 
+export function add(container) {
+  return { type: 'CONTAINERS_LIST_ADD', container };
+}
+
 export function list() {
-  const client = lxd(getLxdServer());
   return (dispatch) => {
     dispatch(loading(true));
 
-    client.containers((err, containers) => {
-      if (err != null) {
-        dispatch(loading(false));
-        dispatch(error(err));
-      } else {
-        dispatch(loading(false));
-        dispatch(success(containers));
-      }
+    fetch('/1.0/containers').then((response) => {
+      response.data.metadata.map(val => fetch(val).then(cr => dispatch(add(cr.data.metadata))));
+    }).catch((err) => {
+      dispatch(loading(false));
+      dispatch(error(err));
+    }).then(() => {
+      dispatch(loading(false));
     });
   };
 }

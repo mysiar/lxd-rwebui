@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "LXD UI in React/Material",
   "private": true,
+  "license": "MIT",
   "author": {
     "name": "Piotr Synowiec",
     "email": "psynowiec@gmail.com",
@@ -35,6 +36,7 @@
     }
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "electron-is-dev": "0.1.2",
     "lodash": "^4.17.4",
     "material-ui": "^0.18.3",

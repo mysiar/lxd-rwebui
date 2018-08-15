@@ -36,22 +36,22 @@ class Containers extends Component {
   renderTableBody() {
     if (this.props.containers) {
       return this.props.containers.map(container => (
-        <TableRow key={container.name()}>
+        <TableRow key={container.name}>
           <TableRowColumn>
-            {containerNameButton(container.name())}
+            {containerNameButton(container.name)}
           </TableRowColumn>
-          <TableRowColumn>{container.architecture()}</TableRowColumn>
+          <TableRowColumn>{container.architecture}</TableRowColumn>
           <TableRowColumn style={{ textAlign: 'center' }}><Checkbox
-            checked={container.stateful()}
+            checked={container.stateful}
             disabled
           />
           </TableRowColumn>
           <TableRowColumn style={{ textAlign: 'center' }}><Checkbox
-            checked={container.ephemeral()}
+            checked={container.ephemeral}
             disabled
           />
           </TableRowColumn>
-          <TableRowColumn>{containerStatusButton(container.statusCode())}</TableRowColumn>
+          <TableRowColumn>{containerStatusButton(container.status_code)}</TableRowColumn>
         </TableRow>
         ),
       );
