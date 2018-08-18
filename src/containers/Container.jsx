@@ -11,7 +11,7 @@ import IconRestart from 'material-ui/svg-icons/av/repeat';
 import IconDelete from 'material-ui/svg-icons/content/delete-sweep';
 
 import { COLOR_PRIMARY_2 } from '../constants/Colors';
-import { item, reset, start, stop, restart, refresh } from '../actions/container';
+import { item, reset, start, stop, restart, refresh } from '../actions/containers/item';
 import { containerNameButton, containerStatusButton } from '../utils/helpers';
 
 
@@ -30,7 +30,7 @@ class Container extends Component {
     restart: PropTypes.func.isRequired,
     refresh: PropTypes.func.isRequired,
     reset: PropTypes.func.isRequired,
-    error: PropTypes.string,
+    // error: PropTypes.string,
     container: PropTypes.object.isRequired,
   };
 
@@ -57,8 +57,15 @@ class Container extends Component {
       const container = this.props.container;
       return (
         <div className="container">
-          <div>IPv4 : {container.ipv4}</div>
+          <div>Description : {container.description}</div>
+          <div>Location    : {container.location}</div>
+          <div>Arch        : {container.architecture}</div>
+          <div>Ephemeral   : {container.ephemeral.toString()}</div>
+          <div>Stateful    : {container.stateful.toString()}</div>
+          <div>Created     : {container.created_at}</div>
+          <div>Profiles    : {container.profiles.map(a => {return a + ', '})}</div>
 
+          <div>IPv4 : {container.ipv4}</div>
           <br />
         </div>
       );
@@ -103,7 +110,7 @@ class Container extends Component {
                 {containerStatusButton(this.containerStatusCode())}
               </span>}
             />
-            {this.props.error && <div className="container">{this.props.error}</div>}
+            {/*{this.props.error && <div className="container">{this.props.error.name}</div>}*/}
 
             <div className="container">
               <hr />
@@ -151,8 +158,8 @@ class Container extends Component {
 }
 
 const mapStateToProps = state => ({
-  container: state.container.container,
-  error: state.container.error,
+  container: state.containers.item.data,
+  error: state.containers.item.error,
 });
 
 const mapDispatchToProps = dispatch => ({

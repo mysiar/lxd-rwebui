@@ -12,8 +12,8 @@ import {
 } from 'material-ui/Table';
 import { Card, CardTitle } from 'material-ui/Card';
 
-import { list, reset } from '../actions/containers';
-import { item } from '../actions/container';
+import { list, reset } from '../actions/containers/list';
+import { item } from '../actions/containers/item';
 import { containerNameButton, containerStatusButton } from '../utils/helpers';
 
 class Containers extends Component {
@@ -95,8 +95,8 @@ class Containers extends Component {
 }
 
 const mapStateToProps = state => ({
-  containers: state.containers.containers,
-  error: state.containers.error,
+  containers: state.containers.list.data,
+  error: state.containers.list.error,
 });
 
 const mapDispatchToProps = dispatch => ({

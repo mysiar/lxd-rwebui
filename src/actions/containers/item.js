@@ -1,7 +1,7 @@
-import fetch from '../utils/axiosFetch';
+import fetch from '../../utils/axiosFetch';
 import {
   CONTAINER_ITEM_ERROR, CONTAINER_ITEM_LOADING, CONTAINER_ITEM_SUCCESS, CONTAINER_ITEM_RESET,
-} from '../constants/App';
+} from '../../constants/App';
 
 export function error(msg) {
   return { type: CONTAINER_ITEM_ERROR, msg };
@@ -35,7 +35,7 @@ export function refresh(containerName) {
         dispatch(success(response.data.metadata));
       }).catch((err) => {
         dispatch(loading(false));
-        dispatch(error(err));
+        dispatch(error(err.toString()));
       }).then(() => {
         dispatch(loading(false));
       });

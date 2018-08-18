@@ -107,8 +107,8 @@ class TopToolbar extends Component {
 
 const mapStateToProps = state => ({
   loading: [
-    state.containers.loading,
-    state.container.loading,
+    state.containers.list.loading,
+    state.containers.item.loading,
   ],
 });
 

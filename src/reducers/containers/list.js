@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import {
   CONTAINERS_LIST_ERROR, CONTAINERS_LIST_LOADING, CONTAINERS_LIST_SUCCESS,
   CONTAINERS_LIST_ADD, CONTAINERS_LIST_RESET,
-} from '../constants/App';
+} from '../../constants/App';
 
 export function error(state = null, action) {
   switch (action.type) {
@@ -30,7 +30,7 @@ export function loading(state = false, action) {
   }
 }
 
-export function containers(state = [], action) {
+export function data(state = [], action) {
   switch (action.type) {
     case CONTAINERS_LIST_SUCCESS:
       return action.containers;
@@ -46,4 +46,4 @@ export function containers(state = [], action) {
   }
 }
 
-export default combineReducers({ error, loading, containers });
+export default combineReducers({ error, loading, data });

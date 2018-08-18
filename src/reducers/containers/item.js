@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import {
   CONTAINER_ITEM_ERROR, CONTAINER_ITEM_LOADING, CONTAINER_ITEM_SUCCESS, CONTAINER_ITEM_RESET,
-} from '../constants/App';
+} from '../../constants/App';
 
 export function error(state = null, action) {
   switch (action.type) {
@@ -29,7 +29,7 @@ export function loading(state = false, action) {
   }
 }
 
-export function container(state = {}, action) {
+export function data(state = {}, action) {
   switch (action.type) {
     case CONTAINER_ITEM_SUCCESS:
       return action.container;
@@ -42,4 +42,4 @@ export function container(state = {}, action) {
   }
 }
 
-export default combineReducers({ error, loading, container });
+export default combineReducers({ error, loading, data });

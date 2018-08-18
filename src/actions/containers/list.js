@@ -1,8 +1,8 @@
-import fetch from '../utils/axiosFetch';
+import fetch from '../../utils/axiosFetch';
 import {
   CONTAINERS_LIST_ERROR, CONTAINERS_LIST_LOADING, CONTAINERS_LIST_SUCCESS,
   CONTAINERS_LIST_ADD, CONTAINERS_LIST_RESET,
-} from '../constants/App';
+} from '../../constants/App';
 
 export function error(msg) {
   return { type: CONTAINERS_LIST_ERROR, msg };
