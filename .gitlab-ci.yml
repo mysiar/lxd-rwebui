@@ -1,0 +1,10 @@
+CI:
+  tags:
+  - node-10
+  script:
+  - export CI=true
+  - yarn install
+  - yarn build
+  - yarn test
+  - yarn lint
+
