@@ -7,7 +7,7 @@ import {
   PROFILES_LIST_ADD,
   PROFILES_LIST_RESET,
   PROFILES_ITEM_SUCCESS,
-} from '../constants/App'
+} from '../constants/App';
 
 export function error(state = null, action) {
   switch (action.type) {

@@ -6,7 +6,7 @@ import {
   PROFILES_LIST_ADD,
   PROFILES_LIST_RESET,
   PROFILES_LOADING,
-} from '../constants/App'
+} from '../constants/App';
 
 
 // common actions

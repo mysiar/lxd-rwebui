@@ -3,7 +3,7 @@ import fetch from '../utils/axiosFetch';
 import {
   IMAGES_ITEM_SUCCESS,
   IMAGES_ERROR, IMAGES_LIST_ADD, IMAGES_LIST_RESET, IMAGES_LOADING,
-} from '../constants/App'
+} from '../constants/App';
 
 
 // common actions

@@ -7,7 +7,7 @@ import {
   IMAGES_LIST_ADD,
   IMAGES_LIST_RESET,
   IMAGES_ITEM_SUCCESS,
-} from '../constants/App'
+} from '../constants/App';
 
 export function error(state = null, action) {
   switch (action.type) {
