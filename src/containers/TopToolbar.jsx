@@ -67,7 +67,7 @@ class TopToolbar extends Component {
 
           <ToolbarSeparator />
 
-          <Link to="/">
+          <Link to="/images">
             <RaisedButton
               label="Images"
               backgroundColor={COLOR_PRIMARY_2}
@@ -77,7 +77,7 @@ class TopToolbar extends Component {
 
           <ToolbarSeparator />
 
-          <Link to="/">
+          <Link to="/profiles">
             <RaisedButton
               label="Profiles"
               backgroundColor={COLOR_PRIMARY_2}

@@ -4,8 +4,8 @@ import {
   CONTAINERS_LOADING,
   CONTAINERS_LIST_RESET,
   CONTAINERS_LIST_ADD,
-  CONTAINER_ITEM_RESET,
-  CONTAINER_ITEM_SUCCESS,
+  CONTAINERS_ITEM_RESET,
+  CONTAINERS_ITEM_SUCCESS,
 } from '../constants/App';
 
 export function error(state = null, action) {
@@ -13,7 +13,7 @@ export function error(state = null, action) {
     case CONTAINERS_ERROR:
       return action.msg;
 
-    case CONTAINER_ITEM_RESET:
+    case CONTAINERS_ITEM_RESET:
       return null;
 
     case CONTAINERS_LIST_RESET:
@@ -29,7 +29,7 @@ export function loading(state = false, action) {
     case CONTAINERS_LOADING:
       return action.msg;
 
-    case CONTAINER_ITEM_RESET:
+    case CONTAINERS_ITEM_RESET:
       return false;
 
     case CONTAINERS_LIST_RESET:
@@ -42,10 +42,10 @@ export function loading(state = false, action) {
 
 export function item(state = {}, action) {
   switch (action.type) {
-    case CONTAINER_ITEM_SUCCESS:
+    case CONTAINERS_ITEM_SUCCESS:
       return action.container;
 
-    case CONTAINER_ITEM_RESET:
+    case CONTAINERS_ITEM_RESET:
       return {};
 
     default:

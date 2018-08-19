@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Checkbox from 'material-ui/Checkbox';
 import { connect } from 'react-redux';
+import Checkbox from 'material-ui/Checkbox';
 import {
   Table,
   TableBody,

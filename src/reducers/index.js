@@ -4,6 +4,8 @@ import { reducer as form } from 'redux-form';
 
 /* eslint-disable */
 import containers from './containers';
+import images from './images';
+import profiles from './profiles';
 
 import { getLxdServer } from '../utils/localStorage';
 
@@ -15,4 +17,6 @@ export default combineReducers(
     routing,
     form,
     containers,
+    images,
+    profiles,
   });

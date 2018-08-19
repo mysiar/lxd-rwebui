@@ -3,10 +3,10 @@ import fetch from '../utils/axiosFetch';
 import {
   CONTAINERS_LOADING,
   CONTAINERS_ERROR,
-  CONTAINER_ITEM_RESET,
+  CONTAINERS_ITEM_RESET,
   CONTAINERS_LIST_RESET,
   CONTAINERS_LIST_ADD,
-  CONTAINER_ITEM_SUCCESS,
+  CONTAINERS_ITEM_SUCCESS,
 } from '../constants/App';
 
 // common actions
@@ -32,7 +32,7 @@ export function list() {
     dispatch(loading(true));
 
     fetch('/1.0/containers').then((response) => {
-      response.data.metadata.map(val => fetch(val).then(cr => dispatch(add(cr.data.metadata))));
+      response.data.metadata.map(val => fetch(val).then(rsp => dispatch(add(rsp.data.metadata))));
     }).catch((err) => {
       dispatch(loading(false));
       dispatch(error(err.toString()));
@@ -44,11 +44,11 @@ export function list() {
 
 // item actions
 export function resetItem() {
-  return { type: CONTAINER_ITEM_RESET };
+  return { type: CONTAINERS_ITEM_RESET };
 }
 
 export function success(container) {
-  return { type: CONTAINER_ITEM_SUCCESS, container };
+  return { type: CONTAINERS_ITEM_SUCCESS, container };
 }
 
 export function item(container) {
