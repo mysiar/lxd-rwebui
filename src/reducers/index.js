@@ -3,7 +3,7 @@ import { routerReducer as routing } from 'react-router-redux';
 import { reducer as form } from 'redux-form';
 
 /* eslint-disable */
-import containers from './containers/';
+import containers from './containers';
 
 import { getLxdServer } from '../utils/localStorage';
 

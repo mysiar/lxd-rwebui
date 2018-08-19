@@ -11,7 +11,7 @@ import IconRestart from 'material-ui/svg-icons/av/repeat';
 import IconDelete from 'material-ui/svg-icons/content/delete-sweep';
 
 import { COLOR_PRIMARY_2 } from '../constants/Colors';
-import { item, reset, start, stop, restart, refresh } from '../actions/containers/item';
+import { resetItem, start, stop, restart, refresh } from '../actions/containers';
 import { containerNameButton, containerStatusButton } from '../utils/helpers';
 
 
@@ -158,17 +158,17 @@ class Container extends Component {
 }
 
 const mapStateToProps = state => ({
-  container: state.containers.item.data,
-  error: state.containers.item.error,
+  container: state.containers.item,
+  error: state.containers.error,
 });
 
 const mapDispatchToProps = dispatch => ({
-  item: arg => dispatch(item(arg)),
+  // item: arg => dispatch(item(arg)),
   start: arg => dispatch(start(arg)),
   stop: arg => dispatch(stop(arg)),
   restart: arg => dispatch(restart(arg)),
   refresh: arg => dispatch(refresh(arg)),
-  reset: () => dispatch(reset()),
+  reset: () => dispatch(resetItem()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Container);

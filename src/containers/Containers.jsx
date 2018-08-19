@@ -12,8 +12,7 @@ import {
 } from 'material-ui/Table';
 import { Card, CardTitle } from 'material-ui/Card';
 
-import { list, reset } from '../actions/containers/list';
-import { item } from '../actions/containers/item';
+import { list, resetList, add, item } from '../actions/containers';
 import { containerNameButton, containerStatusButton } from '../utils/helpers';
 
 class Containers extends Component {
@@ -23,7 +22,7 @@ class Containers extends Component {
       PropTypes.shape({}),
     ).isRequired,
     list: PropTypes.func.isRequired,
-    reset: PropTypes.func.isRequired,
+    resetList: PropTypes.func.isRequired,
     item: PropTypes.func.isRequired,
   };
 
@@ -32,7 +31,7 @@ class Containers extends Component {
   }
 
   componentWillUnmount() {
-    this.props.reset();
+    this.props.resetList();
   }
 
   renderTableBody() {
@@ -95,13 +94,14 @@ class Containers extends Component {
 }
 
 const mapStateToProps = state => ({
-  containers: state.containers.list.data,
-  error: state.containers.list.error,
+  containers: state.containers.list,
+  error: state.containers.error,
 });
 
 const mapDispatchToProps = dispatch => ({
   list: () => dispatch(list()),
-  reset: () => dispatch(reset()),
+  resetList: () => dispatch(resetList()),
+  add: arg => dispatch(add(arg)),
   item: arg => dispatch(item(arg)),
 });
 
