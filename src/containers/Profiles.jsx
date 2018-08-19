@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { list, resetList, add, item } from '../actions/profiles';
+import {
+  list, resetList, add, item,
+} from '../actions/profiles';
 
 class Profiles extends Component {
   static propTypes = {
@@ -26,9 +28,13 @@ class Profiles extends Component {
   renderTableBody() {
     if (this.props.profiles) {
       return this.props.profiles.map(profile => (
-          <p>{profile.name}, {profile.description}</p>
-        ),
-      );
+        <p key={profile.name}>
+          {profile.name}
+          ,
+          {' '}
+          {profile.description}
+        </p>
+      ));
     }
     return null;
   }

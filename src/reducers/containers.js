@@ -55,7 +55,6 @@ export function item(state = {}, action) {
 
 export function list(state = [], action) {
   switch (action.type) {
-
     case CONTAINERS_LIST_RESET:
       return [];
 
@@ -67,4 +66,6 @@ export function list(state = [], action) {
   }
 }
 
-export default combineReducers({ error, loading, item, list });
+export default combineReducers({
+  error, loading, item, list,
+});

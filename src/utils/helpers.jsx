@@ -23,7 +23,7 @@ export function containerStatus(code) {
 
 export function containerNameButton(container, callback = () => {}) {
   return (
-    <Link to={`/containers/${container.name}`} >
+    <Link to={`/containers/${container.name}`}>
       <RaisedButton
         label={container.name}
         primary

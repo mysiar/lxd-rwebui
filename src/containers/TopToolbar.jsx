@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
-import { Toolbar, ToolbarGroup, ToolbarTitle, ToolbarSeparator } from 'material-ui/Toolbar';
+import {
+  Toolbar, ToolbarGroup, ToolbarTitle, ToolbarSeparator,
+} from 'material-ui/Toolbar';
 import TextField from 'material-ui/TextField';
 
 import {
@@ -23,7 +25,6 @@ const ToolBarStyle = {
 };
 
 class TopToolbar extends Component {
-
   static propTypes = {
     loading: PropTypes.arrayOf(
       PropTypes.bool,
@@ -49,10 +50,12 @@ class TopToolbar extends Component {
         <ToolbarGroup>
 
           {this.checkLoading() && <ProgressBar />}
-          {!this.checkLoading() &&
+          {!this.checkLoading()
+          && (
           <Link to="/">
             <img height="50" src="/img/lxd.png" alt="lxd logo" />
           </Link>
+          )
           }
           <span>&nbsp;</span>
           <ToolbarTitle text={APP_NAME} />
@@ -96,7 +99,10 @@ class TopToolbar extends Component {
             }}
             // value={this.props.lxdServer}
           />
-          <span>Ver: {APP_VER}</span>
+          <span>
+Ver:
+            {APP_VER}
+          </span>
         </ToolbarGroup>
 
 

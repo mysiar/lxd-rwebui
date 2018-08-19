@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getLxdServer } from '../utils/localStorage';
+import { getLxdServer } from './localStorage';
 
 // const LXD_URL = 'https://lxd.geomysiar.pl';
 const LXD_USER = 'lxd-test';

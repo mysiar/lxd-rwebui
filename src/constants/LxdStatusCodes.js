@@ -17,4 +17,3 @@ LXD_STATUS_CODES[400] = 'Failure';
 LXD_STATUS_CODES[401] = 'Cancelled';
 
 export default LXD_STATUS_CODES;
-

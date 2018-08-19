@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { list, resetList, add, item } from '../actions/images';
+import {
+  list, resetList, add, item,
+} from '../actions/images';
 
 class Images extends Component {
   static propTypes = {
@@ -24,11 +26,9 @@ class Images extends Component {
   }
 
   renderTableBody() {
-    if (this.props.images) {
-      return this.props.images.map(image => (
-        <p>{image.fingerprint}</p>
-        ),
-      );
+    const { images } = this.props;
+    if (images) {
+      return images.map(image => (<p key={image.fingerprint}>{image.fingerprint}</p>));
     }
     return null;
   }

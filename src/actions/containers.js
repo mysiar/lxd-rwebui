@@ -63,14 +63,14 @@ export function refresh(containerName) {
   return (dispatch) => {
     dispatch(loading(true));
     fetch(`/1.0/containers/${containerName}`)
-    .then((response) => {
-      dispatch(success(response.data.metadata));
-    }).catch((err) => {
-      dispatch(loading(false));
-      dispatch(error(err.toString()));
-    }).then(() => {
-      dispatch(loading(false));
-    });
+      .then((response) => {
+        dispatch(success(response.data.metadata));
+      }).catch((err) => {
+        dispatch(loading(false));
+        dispatch(error(err.toString()));
+      }).then(() => {
+        dispatch(loading(false));
+      });
   };
 }
 
@@ -79,15 +79,15 @@ function state(containerName, options) {
     dispatch(loading(true));
 
     fetch(`/1.0/containers/${containerName}/state`, options)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((err) => {
-      dispatch(loading(false));
-      dispatch(error(err));
-    }).then(() => {
-      dispatch(loading(false));
-    });
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        dispatch(loading(false));
+        dispatch(error(err));
+      }).then(() => {
+        dispatch(loading(false));
+      });
   };
 }
 
@@ -98,8 +98,7 @@ export function start(containerName) {
       data: {
         action: 'start',
       },
-    },
-  );
+    });
 }
 
 export function stop(containerName) {
@@ -109,8 +108,7 @@ export function stop(containerName) {
       data: {
         action: 'stop',
       },
-    },
-  );
+    });
 }
 
 export function restart(containerName) {
@@ -120,6 +118,5 @@ export function restart(containerName) {
       data: {
         action: 'restart',
       },
-    },
-  );
+    });
 }

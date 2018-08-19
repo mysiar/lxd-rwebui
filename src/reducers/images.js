@@ -43,7 +43,6 @@ export function loading(state = false, action) {
 
 export function list(state = [], action) {
   switch (action.type) {
-
     case IMAGES_LIST_RESET:
       return [];
 
@@ -68,5 +67,6 @@ export function item(state = {}, action) {
   }
 }
 
-export default combineReducers({ error, loading, list, item });
-
+export default combineReducers({
+  error, loading, list, item,
+});

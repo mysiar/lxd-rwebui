@@ -11,7 +11,9 @@ import IconRestart from 'material-ui/svg-icons/av/repeat';
 import IconDelete from 'material-ui/svg-icons/content/delete-sweep';
 
 import { COLOR_PRIMARY_2 } from '../constants/Colors';
-import { resetItem, start, stop, restart, refresh } from '../actions/containers';
+import {
+  resetItem, start, stop, restart, refresh,
+} from '../actions/containers';
 import { containerNameButton, containerStatusButton } from '../utils/helpers';
 
 
@@ -23,7 +25,6 @@ const iconButtonStyle = {
 };
 
 class Container extends Component {
-
   static propTypes = {
     start: PropTypes.func.isRequired,
     stop: PropTypes.func.isRequired,
@@ -38,41 +39,6 @@ class Container extends Component {
     this.props.reset();
   }
 
-  isContainer() {
-    if (!_isEmpty(this.props.container)) {
-      return true;
-    }
-    return false;
-  }
-
-  containerStatusCode() {
-    if (this.isContainer()) {
-      return this.props.container.status_code;
-    }
-    return -1;
-  }
-
-  containerInfo() {
-    if (this.isContainer()) {
-      const container = this.props.container;
-      return (
-        <div className="container">
-          <div>Description : {container.description}</div>
-          <div>Location    : {container.location}</div>
-          <div>Arch        : {container.architecture}</div>
-          <div>Ephemeral   : {container.ephemeral.toString()}</div>
-          <div>Stateful    : {container.stateful.toString()}</div>
-          <div>Created     : {container.created_at}</div>
-          <div>Profiles    : {container.profiles.map(a => {return a + ', '})}</div>
-
-          <div>IPv4 : {container.ipv4}</div>
-          <br />
-        </div>
-      );
-    }
-
-    return <span />;
-  }
 
   containerStart = () => {
     if (this.isContainer()) {
@@ -98,6 +64,63 @@ class Container extends Component {
     }
   }
 
+  containerInfo() {
+    if (this.isContainer()) {
+      const { container } = this.props;
+      return (
+        <div className="container">
+          <div>
+            Description :
+            {container.description}
+          </div>
+          <div>
+            Location    :
+            {container.location}
+          </div>
+          <div>
+            Arch        :
+            {container.architecture}
+          </div>
+          <div>
+            Ephemeral   :
+            {container.ephemeral.toString()}
+          </div>
+          <div>
+            Stateful    :
+            {container.stateful.toString()}
+          </div>
+          <div>
+            Created     :
+            {container.created_at}
+          </div>
+          <div>
+            Profiles    :
+            {container.profiles.map(a => `${a}, `)}
+          </div>
+
+          <div>
+            IPv4 :
+            {container.ipv4}
+          </div>
+          <br />
+        </div>
+      );
+    }
+
+    return <span />;
+  }
+
+  containerStatusCode() {
+    if (this.isContainer()) {
+      return this.props.container.status_code;
+    }
+    return -1;
+  }
+
+  isContainer() {
+    return !_isEmpty(this.props.container);
+  }
+
   render() {
     if (this.isContainer()) {
       return (
@@ -105,12 +128,14 @@ class Container extends Component {
           <Card className="container">
             <CardTitle
               title="Container"
-              subtitle={<span>
-                {containerNameButton(this.props.container, this.containerInfoRefresh)}
-                {containerStatusButton(this.containerStatusCode())}
-              </span>}
+              subtitle={(
+                <span>
+                  {containerNameButton(this.props.container, this.containerInfoRefresh)}
+                  {containerStatusButton(this.containerStatusCode())}
+                </span>
+)}
             />
-            {/*{this.props.error && <div className="container">{this.props.error.name}</div>}*/}
+            {/* {this.props.error && <div className="container">{this.props.error.name}</div>} */}
 
             <div className="container">
               <hr />
@@ -154,7 +179,6 @@ class Container extends Component {
     }
     return <span />;
   }
-
 }
 
 const mapStateToProps = state => ({
@@ -172,4 +196,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Container);
-

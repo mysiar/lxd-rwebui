@@ -15,7 +15,7 @@ export default (
     <Route exact path="/images/" component={Images} />
     <Route exact path="/profiles/" component={Profiles} />
     { // routing for electron start page
-      window.location.pathname.includes('index.html') &&
-      <Redirect to="/" /> }
+      window.location.pathname.includes('index.html')
+      && <Redirect to="/" /> }
   </Switch>
 );

@@ -12,7 +12,9 @@ import {
 } from 'material-ui/Table';
 import { Card, CardTitle } from 'material-ui/Card';
 
-import { list, resetList, add, item } from '../actions/containers';
+import {
+  list, resetList, add, item,
+} from '../actions/containers';
 import { containerNameButton, containerStatusButton } from '../utils/helpers';
 
 class Containers extends Component {
@@ -42,20 +44,21 @@ class Containers extends Component {
             {containerNameButton(container, () => this.props.item(container))}
           </TableRowColumn>
           <TableRowColumn>{container.architecture}</TableRowColumn>
-          <TableRowColumn style={{ textAlign: 'center' }}><Checkbox
-            checked={container.stateful}
-            disabled
-          />
+          <TableRowColumn style={{ textAlign: 'center' }}>
+            <Checkbox
+              checked={container.stateful}
+              disabled
+            />
           </TableRowColumn>
-          <TableRowColumn style={{ textAlign: 'center' }}><Checkbox
-            checked={container.ephemeral}
-            disabled
-          />
+          <TableRowColumn style={{ textAlign: 'center' }}>
+            <Checkbox
+              checked={container.ephemeral}
+              disabled
+            />
           </TableRowColumn>
           <TableRowColumn>{containerStatusButton(container.status_code)}</TableRowColumn>
         </TableRow>
-        ),
-      );
+      ));
     }
     return null;
   }

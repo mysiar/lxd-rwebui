@@ -25,7 +25,7 @@ const AppStore = createStore(
   reducers,
   initialState,
   combinedMiddleware,
-  );
+);
 
 AppStore.subscribe(() => { setLxdServer(AppStore.getState().lxdServer); });
 
