@@ -11,6 +11,7 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 import { Card, CardTitle } from 'material-ui/Card';
+import { sortBy as _sortBy } from 'lodash';
 
 import {
   list, resetList, add, item,
@@ -24,7 +25,7 @@ class Containers extends Component {
       PropTypes.shape({}),
     ).isRequired,
     list: PropTypes.func.isRequired,
-    resetList: PropTypes.func.isRequired,
+    reset: PropTypes.func.isRequired,
     item: PropTypes.func.isRequired,
   };
 
@@ -33,12 +34,15 @@ class Containers extends Component {
   }
 
   componentWillUnmount() {
-    this.props.resetList();
+    this.props.reset();
   }
 
   renderTableBody() {
-    if (this.props.containers) {
-      return this.props.containers.map(container => (
+    let { containers } = this.props;
+    if (containers) {
+      // containers.sort((a, b) => ((a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)));
+      containers = _sortBy(containers, ['status', 'name']);
+      return containers.map(container => (
         <TableRow key={container.name}>
           <TableRowColumn>
             {containerNameButton(container, () => this.props.item(container))}
@@ -103,7 +107,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   list: () => dispatch(list()),
-  resetList: () => dispatch(resetList()),
+  reset: () => dispatch(resetList()),
   add: arg => dispatch(add(arg)),
   item: arg => dispatch(item(arg)),
 });

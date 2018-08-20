@@ -28,7 +28,15 @@ class Images extends Component {
   renderTableBody() {
     const { images } = this.props;
     if (images) {
-      return images.map(image => (<p key={image.fingerprint}>{image.fingerprint}</p>));
+      return images.map(image => (
+        <p key={image.fingerprint}>
+          {image.fingerprint}
+          |
+          {image.architecture}
+          |
+          {image.aliases.map(alias => (alias.name))}
+        </p>
+      ));
     }
     return null;
   }

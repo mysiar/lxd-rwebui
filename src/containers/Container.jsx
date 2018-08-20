@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Card, CardTitle } from 'material-ui/Card';
 import { isEmpty as _isEmpty } from 'lodash';
 
+import ReactJson from 'react-json-view';
+
 import IconButton from 'material-ui/IconButton';
 import IconStop from 'material-ui/svg-icons/av/stop';
 import IconStart from 'material-ui/svg-icons/av/play-circle-outline';
@@ -68,42 +70,20 @@ class Container extends Component {
     if (this.isContainer()) {
       const { container } = this.props;
       return (
-        <div className="container">
-          <div>
-            Description :
-            {container.description}
-          </div>
-          <div>
-            Location    :
-            {container.location}
-          </div>
-          <div>
-            Arch        :
-            {container.architecture}
-          </div>
-          <div>
-            Ephemeral   :
-            {container.ephemeral.toString()}
-          </div>
-          <div>
-            Stateful    :
-            {container.stateful.toString()}
-          </div>
-          <div>
-            Created     :
-            {container.created_at}
-          </div>
-          <div>
-            Profiles    :
-            {container.profiles.map(a => `${a}, `)}
-          </div>
-
-          <div>
-            IPv4 :
-            {container.ipv4}
-          </div>
-          <br />
-        </div>
+        <ReactJson
+          src={container}
+          name={false}
+          theme="monokai"
+          indentWidth={2}
+          enableClipboard={false}
+          enableEdit={false}
+          enableAdd={false}
+          enableDelete={false}
+          displayObjectSize={false}
+          displayDataTypes={false}
+          colapsed={false}
+          collapseStringsAfterLength={false}
+        />
       );
     }
 
