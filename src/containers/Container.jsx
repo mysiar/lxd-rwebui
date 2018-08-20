@@ -113,7 +113,7 @@ class Container extends Component {
                   {containerNameButton(this.props.container, this.containerInfoRefresh)}
                   {containerStatusButton(this.containerStatusCode())}
                 </span>
-)}
+              )}
             />
             {/* {this.props.error && <div className="container">{this.props.error.name}</div>} */}
 
