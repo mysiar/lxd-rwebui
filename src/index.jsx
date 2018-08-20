@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory';
+
 import { MuiThemeProvider } from 'material-ui';
 
 import AppRoutes from './routes/AppRoutes';
@@ -11,10 +13,12 @@ import './styles/style.css';
 
 import TopToolbar from './containers/TopToolbar';
 
+const customHistory = createBrowserHistory();
+
 ReactDOM.render(
   <Provider store={AppStore}>
     <MuiThemeProvider muiTheme={theme}>
-      <Router>
+      <Router history={customHistory}>
         <div>
           <TopToolbar />
           {AppRoutes}

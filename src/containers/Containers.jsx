@@ -72,7 +72,7 @@ class Containers extends Component {
       <div>
         <Card className="container">
           <CardTitle title="Containers" subtitle="List of LXD containers" />
-          {this.props.error && <div className="container">{this.props.error}</div>}
+          {/*{this.props.error && <div className="container">{this.props.error}</div>}*/}
           <Table
             fixedHeader
             selectable={false}
