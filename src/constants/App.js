@@ -1,6 +1,9 @@
 export const APP_NAME = 'LXD RWebUI';
 export const APP_VER = '0.2.0';
-export const LXD_SERVER = 'https://localhost:8443';
+export const LXD_SERVER = 'https://localhost';
+
+export const API_INFO = 'API_INFO';
+export const API_LOADING = 'API_LOADING';
 
 export const CONTAINERS_ERROR = 'CONTAINERS_ERROR';
 export const CONTAINERS_LOADING = 'CONTAINERS_LOADING';

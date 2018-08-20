@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import HomePage from '../components/HomePage';
+import HomePage from '../containers/HomePage';
 import Containers from '../containers/Containers';
 import Container from '../containers/Container';
 import Images from '../containers/Images';
