@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "electron-is-dev": "0.1.2",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.13",
     "material-ui": "^0.18.3",
     "node-lxd": "https://github.com/mysiar/node-lxd",
     "prop-types": "^15.5.10",
