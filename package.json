@@ -48,7 +48,8 @@
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "redux-form": "^6.6.3",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "concurrently": "^3.4.0",
@@ -60,7 +61,6 @@
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-react": "^7.1.0",
     "react-scripts": "1.0.10",
-    "snyk": "^1.36.2",
     "wait-on": "^2.0.2",
     "why-did-you-update": "0.0.8"
   },
@@ -72,6 +72,9 @@
     "eject": "react-scripts eject",
     "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "electron-pack": "build --em.main=build/electron.js",
-    "preelectron-pack": "yarn build"
-  }
+    "preelectron-pack": "yarn build",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
+  },
+  "snyk": true
 }
