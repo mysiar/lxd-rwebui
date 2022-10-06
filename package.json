@@ -60,7 +60,7 @@
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-react": "^7.1.0",
     "react-scripts": "1.0.10",
-    "snyk": "^1.36.2",
+    "snyk": "^1.996.0",
     "wait-on": "^2.0.2",
     "why-did-you-update": "0.0.8"
   },
